@@ -1,4 +1,4 @@
-# showroom-recorder
+# showroom-recorder [DEPRECATED]
 An Automatic Japan's SHOWROOM Recorder based on fcicq's Showroom Checker and you-get mechanisms of LIVE Recording
 Currently only set to JKT48 Member, Reva Fidela Adel Pantjoro.
 # Changes to be made
