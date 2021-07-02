@@ -15,7 +15,7 @@ if [ -n "$1" ]; then
             echo "Not Alive, Sleeping $(date +'%F_%H-%M-%S')"
             sleep 5
         done
-        you-get https://www.showroom-live.com/050075159262 --debug -a
+        you-get https://www.showroom-live.com/050075159262 --debug -a -t 10
         if [ "$2" != "loop" ]; then
             break
         fi
