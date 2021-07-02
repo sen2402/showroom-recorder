@@ -5,21 +5,12 @@
 # A Fork of Showroomlive.sh, change to you-get mechanism to capture. specific to Reva Fidela Adel Pantjoro
 # WARNING THIS IS A TEST FILE
 
-(jq --version 1>/dev/null 2>&1) || (echo 'install jq first'; exit)
-(livestreamer --version 1>/dev/null 2>&1) || (echo 'install livestreamer first (run pip/pip3 install livestreamer)'; exit)
-if [ -n "$1" ]; then
-    id=$(echo "$1" | sed 's|^.*/||g')
-    while true; do
-        while true; do
-            (curl -s "https://www.showroom-live.com/room/is_live?room_id=352602" | grep "\"ok\":1") && break
-            echo "Not Alive, Sleeping $(date +'%F_%H-%M-%S')"
-            sleep 5
-        done
-        you-get https://www.showroom-live.com/050075159262 --debug -a -t 10
-        if [ "$2" != "loop" ]; then
-            break
-        fi
-    done
+(curl -s "https://www.showroom-live.com/room/is_live?room_id=352602" | grep "\"ok\":1") && break
+if "\"ok\":1"; do
+    you-get https://www.showroom-live.com/050075159262 --debug --auto-rename --timeout 5
+    echo "Recorded"
+    if "Recorded"; do
+    sh showroom-tester.sh
 else
-    echo "usage: $0 showroom_roomid (Note: roomid is not username)"
-fi
+echo "Live not detected, restarting $(date +'%F_%H-%M-%S')"
+sh showroom-tester.sh
